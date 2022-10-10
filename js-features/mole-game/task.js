@@ -27,9 +27,3 @@ holes.forEach(function (hole) {
     };
   };
 });
-
-
-
-
-
-
