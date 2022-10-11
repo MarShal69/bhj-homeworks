@@ -15,6 +15,8 @@ holes.forEach(function (hole) {
         alert("Победа!");
         dead.textContent = 0;
         dead.textContent1 = 0;
+        lost.textContent = 0;
+        lost.textContent1 = 0;
       }
     } else {
       lost.textContent1 += 1;
@@ -23,6 +25,8 @@ holes.forEach(function (hole) {
         alert("Вы проиграли!");
         lost.textContent = 0;
         lost.textContent1 = 0;
+        dead.textContent = 0;
+        dead.textContent1 = 0;
       };
     };
   };
