@@ -2,7 +2,6 @@ const modalMain = document.getElementById("modal_main");
 const modalSuccess = document.getElementById("modal_success");
 const showSuccess = document.getElementsByClassName("show-success");
 let array = Array.from(document.getElementsByClassName("modal__close_times"));
-// console.log(array);
 
 modalMain.classList.add("modal_active");
  
