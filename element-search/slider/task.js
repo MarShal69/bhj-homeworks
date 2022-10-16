@@ -20,11 +20,9 @@ slider__arrow_next.onclick = function () {
     } else {
         sliderNumber = 0;
         arrayslider[sliderNumber].classList.add("slider__item_active");
-        // arrayslider[sliderNumber].classList.remove("slider__item_active");
         console.log(arrayslider);
     }
 };
-
 
 let sliderLastNumber = arrayslider.length;
 slider__arrow_prev.onclick = function () {
@@ -33,8 +31,8 @@ slider__arrow_prev.onclick = function () {
         arrayslider[sliderNumber].classList.remove("slider__item_active");
         arrayslider[sliderNumber - 1].classList.add("slider__item_active");
     };
-    console.log(arrayslider);
-    console.log(arrayslider.length);
+    // console.log(arrayslider);
+    // console.log(arrayslider.length);
     if (sliderNumber > 0) {
         sliderNumber = sliderNumber - 1;
         // console.log(sliderNumber)
@@ -43,7 +41,7 @@ slider__arrow_prev.onclick = function () {
         arrayslider[sliderNumber - 1].classList.add("slider__item_active");
         arrayslider[sliderNumber].classList.remove("slider__item_active");
         // console.log(arrayslider);
-    }
+    };
 }
 
 
