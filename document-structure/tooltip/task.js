@@ -1,18 +1,32 @@
 const hasTooltip = [...document.querySelectorAll(".has-tooltip")];
-console.log(hasTooltip);
-
 const toolTip = document.createElement("div");
 toolTip.classList.add("tooltip");
 
 hasTooltip.forEach(el => {
     el.onclick = function () {
-        toolTip.textContent = el.getAttribute("title");
-        // el.insertBefore(toolTip, null)
-        // el.insertAdjacentElement("beforeend", toolTip);
         el.appendChild(toolTip);
-        el.setAttribute("position", "relative");
-        toolTip.setAttribute("position", "absolute");
-        toolTip.classList.toggle("tooltip_active");
+
+        const closest = toolTip.closest(".has-tooltip");
+        const child = closest.querySelector(".tooltip");
+
+        toolTip.textContent = el.getAttribute("title");
+
+        if (el.classList.contains("tooltip_active")) {
+            toolTip.classList.remove("tooltip_active");
+        } else {
+            toolTip.classList.add("tooltip_active");
+        };
+
+        el.style.position = "relative";
+        toolTip.style.position = "absolute";
+        let left = closest.getBoundingClientRect().left;
+        child.style.marginLeft = left + "px";
         return false;
     };
 });
+
+
+
+
+
+
