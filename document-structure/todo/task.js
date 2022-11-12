@@ -1,32 +1,35 @@
 const input = document.querySelector(".tasks__input");
-console.log(input);
 const tasksList = document.querySelector(".tasks__list");
-console.log(tasksList);
-// const button = document.querySelector(".tasks__add");
-// console.log(button);
+const button = document.querySelector(".tasks__add");
+const btn = document.querySelectorAll(".task__remove");
+const task = document.querySelectorAll(".task");
 
-input.addEventListener("keyup", (e) => {
-  if (e.key === "Enter" && input.value.trim() !== "") {
-    tasks();
-  };
-  // return event.preventDefault;
-});
-
-
-function tasks() {
-  tasksList.innerHTML += `
-    <div class="task">
-  <div class="task__title">${input.value}</div>
-  <a href="#" class="task__remove">&times;</a>
-</div>
-      `
+button.onclick = function () {
+  tasks();
+  return false;
 };
 
+function tasks() {
+  tasksList.insertAdjacentHTML("beforeend", `
+    <div class="task">
+      <div class="task__title">${input.value}</div>
+      <a href="#" class="task__remove">&times;</a>
+    </div>`
+  )
+};
+
+// или так
 // function tasks() {
-//   tasksList.insertAdjacentHTML("beforeend",
+//   tasksList.innerHTML += `
 //     <div class="task">
-//       <div class="task__title">${input.value}</div>
-//       <a href="#" class="task__remove">&times;</a>
-//     </div>
-//   )
+//   <div class="task__title">${input.value}</div>
+//   <a href="#" class="task__remove">&times;</a>
+// </div>
+//       `
 // };
+
+btn.onclick = function () {
+  let div = btn.parentElement.parentElement;
+  div.removeChild(task);
+  return false;
+};
