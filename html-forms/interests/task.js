@@ -15,9 +15,7 @@ checkBoxes.forEach((el) => {
                     i.checked = false;
                 };
             });
-        } else {
-            el.checked = false;
-        };
+        }
     });
 })
 
