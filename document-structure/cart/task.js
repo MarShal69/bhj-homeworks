@@ -26,28 +26,6 @@ productQuantityControlDec.forEach((el) => {
     });
 });
 
-// product.forEach((el) => {
-//     const productAdd1 = el.querySelector(".product__add");
-
-//     productAdd1.onclick = function () {
-//         const productQuantityValue = el.querySelector(".product__quantity-value")
-//         let amount = + productQuantityValue.textContent;
-
-//         if (amount > 0) {
-//             let iden = el.getAttribute("data-id");
-//             let src = el.querySelector(".product__image").getAttribute("src");
-//             cartProducts.insertAdjacentHTML("beforeend", `
-//     <div class="cart__product" data-id = ${iden}>
-//         <img class="cart__product-image" src=${src}>
-//         <div class="cart__product-count"> ${el.querySelector(".product__quantity-value").textContent}</div>
-//     </div>
-//     `);
-//         };
-//     };
-// });
-
-
-
 
 // перебираем карточки продуктов, находим кнопки "Добавить в корзину"
 product.forEach((el) => {
@@ -88,3 +66,30 @@ product.forEach((el) => {
         };
     };
 });
+
+
+
+
+
+
+
+
+// product.forEach((el) => {
+//     const productAdd1 = el.querySelector(".product__add");
+
+//     productAdd1.onclick = function () {
+//         const productQuantityValue = el.querySelector(".product__quantity-value")
+//         let amount = + productQuantityValue.textContent;
+
+//         if (amount > 0) {
+//             let iden = el.getAttribute("data-id");
+//             let src = el.querySelector(".product__image").getAttribute("src");
+//             cartProducts.insertAdjacentHTML("beforeend", `
+//     <div class="cart__product" data-id = ${iden}>
+//         <img class="cart__product-image" src=${src}>
+//         <div class="cart__product-count"> ${el.querySelector(".product__quantity-value").textContent}</div>
+//     </div>
+//     `);
+//         };
+//     };
+// });
