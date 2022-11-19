@@ -73,7 +73,6 @@ product.forEach((el) => {
 
 
 
-
 // product.forEach((el) => {
 //     const productAdd1 = el.querySelector(".product__add");
 
