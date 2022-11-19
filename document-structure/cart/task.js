@@ -1,9 +1,9 @@
 const productQuantityControlDec = Array.from(document.querySelectorAll(".product__quantity-control_dec"));
 const productQuantityControlInc = Array.from(document.querySelectorAll(".product__quantity-control_inc"));
 const product = Array.from(document.querySelectorAll(".product"));
-console.log(product);
+// console.log(product);
 const cartProducts = document.querySelector(".cart__products");
-console.log(cartProducts)
+// console.log(cartProducts)
 const productAdd = document.querySelector(".product__add")
 
 productQuantityControlInc.forEach((el) => {
@@ -56,30 +56,35 @@ product.forEach((el) => {
     productAdd1.onclick = function () {
         const productQuantityValue = el.querySelector(".product__quantity-value")
         let amount = + productQuantityValue.textContent; // выявляем количество продукта и переводим в цифру
+
         if (amount > 0) {        // если количество продукта > нуля
             let iden = el.getAttribute("data-id");  // находим его id
             let src = el.querySelector(".product__image").getAttribute("src"); // и изображение
 
-            let elements = [...cartProducts.children]   // находим продукты в корзине и формируем из них массив
 
-            // находим id продуктов в корзине и загоняем их в один массивчик
-            let arrayIdent = [];
-            elements.forEach((i) => {
-                let ident = + i.getAttribute("data-id");
-                arrayIdent.push(ident);
+            // Проверяем есть ли этот продукт в корзине
 
-                // обходим массив идентификаторов продуктов, находящихся в корзине и если ни один из них не равен идентификатору(из строки 60) продукта, который мы хотим загнать в корзину или если массив ещё пуст, то вносим в него выбранный продукт  
-                for (let j of arrayIdent) {
-                    if (j !== iden || array.length === 0) {
-                        cartProducts.insertAdjacentHTML("beforeend", `
-    <div class="cart__product" data-id = ${iden}>
-        <img class="cart__product-image" src=${src}>
-        <div class="cart__product-count"> ${el.querySelector(".product__quantity-value").textContent}</div>
-    </div>
-    `);
-                    };
-                };
+            let productsInCard = [...cartProducts.children];   // находим продукты в корзине и формируем из них массив
+
+            // ищем в корзине с продуктами добавляемый элемент по id
+            const productInCard = productsInCard.find(i => {
+                i.getAttribute("data-id") === iden;
+                // i[data-id] === el[iden]
             });
+
+            // Если элемента в корзине нет, то добавляем его в корзину
+            if (!productInCard) {
+                cartProducts.insertAdjacentHTML("beforeend", `
+                <div class="cart__product" data-id = ${iden}>
+                    <img class="cart__product-image" src=${src}>
+                    <div class="cart__product-count"> ${el.querySelector(".product__quantity-value").textContent}</div>
+                </div>
+                `);
+            }
+            else {// а если он уже есть в корзине, то находим в корзине его количество, переводим в цифру и прибавляем к к этому количеству количество добавляемого продукта
+                let productInCardValue = + productInCard.textContent;
+                productInCardValue = productInCardValue + amount;
+            };
         };
     };
 });
