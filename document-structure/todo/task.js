@@ -1,7 +1,7 @@
 const input = document.querySelector(".tasks__input");
 const tasksList = document.querySelector(".tasks__list");
 const button = document.querySelector(".tasks__add");
-const btn = document.querySelectorAll(".task__remove");
+
 const task = document.querySelectorAll(".task");
 
 button.onclick = function () {
@@ -15,21 +15,15 @@ function tasks() {
       <div class="task__title">${input.value}</div>
       <a href="#" class="task__remove">&times;</a>
     </div>`
-  )
-};
+  );
+  input.value = "";
 
-// или так
-// function tasks() {
-//   tasksList.innerHTML += `
-//     <div class="task">
-//   <div class="task__title">${input.value}</div>
-//   <a href="#" class="task__remove">&times;</a>
-// </div>
-//       `
-// };
-
-btn.onclick = function () {
-  let div = btn.parentElement.parentElement;
-  div.removeChild(task);
-  return false;
+  const btn = [...document.querySelectorAll(".task__remove")];
+  btn.forEach((el) => {
+    el.onclick = function () {
+      let div = el.closest(".task");
+      div.remove()
+      return false;
+    };
+  });
 };
