@@ -1,7 +1,6 @@
 const input = document.querySelector(".tasks__input");
 const tasksList = document.querySelector(".tasks__list");
 const button = document.querySelector(".tasks__add");
-
 const task = document.querySelectorAll(".task");
 
 button.onclick = function () {
